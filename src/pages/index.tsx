@@ -1,5 +1,6 @@
 import { Brand } from "@prisma/client";
-import TableBrand from "../components/brand/TableBrand";
+import Botao from "../components/button/Botao";
+import Formulario from "../components/forms/Formulario";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
 import prisma from "../lib/prisma";
@@ -21,12 +22,17 @@ export default function Home({ brand }: BrandProps) {
     <>
       <Header />
       <div className="flex h-screen justify-center items-center bg-blue-900">
-        <Layout titulo="Cadastro">
-          <TableBrand
+        <Layout titulo="Cadastro de Marcas">
+          <div className="flex justify-end">
+            <Botao className="mb-4">Cadastrar</Botao>
+          </div>
+
+          {/* <TableBrand
             brands={brands}
             brandSelecionada={brandSelecionada}
             brandExcluida={brandExcluida}
-          ></TableBrand>
+          /> */}
+          <Formulario brand={brand[1]} />
         </Layout>
       </div>
     </>

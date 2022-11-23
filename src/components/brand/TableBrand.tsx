@@ -26,9 +26,9 @@ export default function TableBrand(props: BrandTabelaProps) {
           key={b.id}
           className={`${i % 2 === 0 ? "bg-gray-100" : "bg-gray-300"}`}
         >
-          <td className=" text-left p-4>">{b.name}</td>
-          <td className=" text-left p-4>">{b.description}</td>
-          <td className=" text-left p-4>">{b.manufacturer}</td>
+          <td className=" text-left p-4">{b.name}</td>
+          <td className=" text-left p-4">{b.description}</td>
+          <td className=" text-left p-4">{b.manufacturer}</td>
           {exibirAcoes ? renderizarAcoes(b) : false}
         </tr>
       );
