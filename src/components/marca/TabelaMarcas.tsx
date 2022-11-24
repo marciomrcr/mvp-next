@@ -1,13 +1,13 @@
 import { Brand } from "@prisma/client";
 import { IconDelete, IconEdit } from "../Icones";
 
-interface BrandTabelaProps {
-  brands: Brand[];
-  brandSelecionada?: (brand: Brand) => void;
-  brandExcluida?: (brand: Brand) => void;
+interface MarcaTabelaProps {
+  marcas: Brand[];
+  marcaSelecionada?: (marca: Brand) => void;
+  marcaExcluida?: (marca: Brand) => void;
 }
-export default function TableBrand(props: BrandTabelaProps) {
-  const exibirAcoes = props.brandSelecionada || props.brandExcluida;
+export default function TabelaMarcas(props: MarcaTabelaProps) {
+  const exibirAcoes = props.marcaSelecionada || props.marcaExcluida;
   function renderizarCabecalho() {
     return (
       <tr>
@@ -20,27 +20,27 @@ export default function TableBrand(props: BrandTabelaProps) {
   }
 
   function renderizarDados() {
-    return props.brands?.map((b, i) => {
+    return props.marcas?.map((marca, i) => {
       return (
         <tr
-          key={b.id}
+          key={marca.id}
           className={`${i % 2 === 0 ? "bg-gray-100" : "bg-gray-300"}`}
         >
-          <td className=" text-left p-4">{b.name}</td>
-          <td className=" text-left p-4">{b.description}</td>
-          <td className=" text-left p-4">{b.manufacturer}</td>
-          {exibirAcoes ? renderizarAcoes(b) : false}
+          <td className=" text-left p-4">{marca.name}</td>
+          <td className=" text-left p-4">{marca.description}</td>
+          <td className=" text-left p-4">{marca.manufacturer}</td>
+          {exibirAcoes ? renderizarAcoes(marca) : false}
         </tr>
       );
     });
   }
 
-  function renderizarAcoes(b: Brand) {
+  function renderizarAcoes(marca: Brand) {
     return (
       <td className="flex justify-center">
-        {props.brandSelecionada ? (
+        {props.marcaSelecionada ? (
           <button
-            onClick={() => props.brandSelecionada?.(b)}
+            onClick={() => props.marcaSelecionada?.(marca)}
             className="flex justify-center items-center text-green-600 rounded-full p-2 m-1 hover:bg-blue-50"
           >
             {IconEdit}
@@ -48,9 +48,9 @@ export default function TableBrand(props: BrandTabelaProps) {
         ) : (
           false
         )}
-        {props.brandExcluida ? (
+        {props.marcaExcluida ? (
           <button
-            onClick={() => props.brandExcluida?.(b)}
+            onClick={() => props.marcaExcluida?.(marca)}
             className="flex justify-center items-center text-red-500 rounded-full p-2 m-1 hover:bg-blue-50"
           >
             {IconDelete}

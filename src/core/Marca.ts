@@ -1,5 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../lib/prisma";
+import prisma from "../lib/prisma";
+
+export type MarcaProps = {
+  id: string;
+  name: string;
+  manufacturer?: string;
+  description?: string;
+};
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;

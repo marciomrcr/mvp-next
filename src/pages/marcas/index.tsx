@@ -1,11 +1,11 @@
 import { Brand } from "@prisma/client";
 import { useState } from "react";
-import Botao from "../components/button/Botao";
-import Formulario from "../components/forms/Formulario";
-import Header from "../components/Header";
-import Layout from "../components/Layout";
-import TableBrand from "../components/marca/TabelaMarcas";
-import prisma from "../lib/prisma";
+import Botao from "../../components/button/Botao";
+import Formulario from "../../components/forms/Formulario";
+import Header from "../../components/Header";
+import Layout from "../../components/Layout";
+import TableBrand from "../../components/marca/TabelaMarcas";
+import prisma from "../../lib/prisma";
 
 interface BrandProps {
   marca: Brand[];
@@ -13,16 +13,20 @@ interface BrandProps {
 
 export default function Home({ marca }: BrandProps) {
   const marcas = marca;
+  const [marcaCadastrada, setMarcaCadastrada] = useState<Brand>();
   const [visible, setVisible] = useState<"tabela" | "form">("tabela");
 
   function marcaSelecionada(marca: Brand) {
-    console.log(marca.name);
+    setMarcaCadastrada(marcaCadastrada);
+    console.log(`alterar...${marca.name}`);
   }
+
   function marcaExcluida(marca: Brand) {
     console.log(`Excluir...${marca.name}`);
   }
   function salvar(marca: Brand) {
     console.log(marca);
+    setVisible("tabela");
   }
 
   return (
@@ -46,7 +50,7 @@ export default function Home({ marca }: BrandProps) {
             </>
           ) : (
             <Formulario
-              marca={marcas[1]}
+              marca={marca[1]}
               mudouNome={salvar}
               cancelado={() => setVisible("tabela")}
             />
