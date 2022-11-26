@@ -1,10 +1,8 @@
 import { Brand } from "@prisma/client";
 import { useState } from "react";
-import Botao from "../components/button/Botao";
-import Formulario from "../components/forms/Formulario";
+import Container from "../components/Container";
 import Header from "../components/Header";
-import Layout from "../components/Layout";
-import TableBrand from "../components/marca/TabelaMarcas";
+import SideBar from "../components/SideBar";
 import prisma from "../lib/prisma";
 
 interface BrandProps {
@@ -26,34 +24,15 @@ export default function Home({ marca }: BrandProps) {
   }
 
   return (
-    <>
-      <Header />
-      <div className="flex h-screen justify-center items-center bg-blue-900">
-        <Layout titulo="Cadastro de Marcas">
-          {visible === "tabela" ? (
-            <>
-              <div className="flex justify-end">
-                <Botao className="mb-4" onClick={() => setVisible("form")}>
-                  Cadastrar
-                </Botao>
-              </div>
-
-              <TableBrand
-                marcas={marcas}
-                marcaSelecionada={marcaSelecionada}
-                marcaExcluida={marcaExcluida}
-              />
-            </>
-          ) : (
-            <Formulario
-              marca={marcas[1]}
-              mudouNome={salvar}
-              cancelado={() => setVisible("tabela")}
-            />
-          )}
-        </Layout>
+    <div>
+      <div className="flex ">
+        <SideBar />
+        <div className="w-screen">
+          <Header />
+          <Container />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -10,11 +10,25 @@ interface FormProps {
   cancelado?: () => void;
 }
 
-const alterar = async function (id: string): Promise<void> {
+interface FormData {
+  name: string;
+  description: string;
+  id: string;
+}
+
+interface marcas {
+  marcas: {
+    name: string;
+    description: string;
+    id: string;
+  }[];
+}
+
+const deletar = async function (id: string): Promise<void> {
   await fetch(`/api/marcas/${id}`, {
-    method: "PUT",
+    method: "DELETE",
   });
-  await Router.push("/");
+  await Router.push("/api/marcas/");
   return;
 };
 
@@ -23,6 +37,12 @@ export default function Formulario(props: FormProps) {
   const [nome, setNome] = useState(
     props.marca?.name ?? "Sem dados para exibir!"
   );
+
+  const [form, setForm] = useState<FormData>({
+    name: "",
+    description: "",
+    id: "",
+  });
   const [descricao, setDescricao] = useState(
     props.marca?.description ?? "Sem dados para exibir!"
   );
@@ -32,7 +52,10 @@ export default function Formulario(props: FormProps) {
       <Entrada texto="Descrição" valor={descricao} mudouValor={setDescricao} />
 
       <div className="flex justify-end mt-7">
-        <Botao className="bg-blue-600 mr-2" onClick={() => alterar(id)}>
+        <Botao
+          className="bg-blue-600 mr-2"
+          onClick={() => setForm(nome, descricao)}
+        >
           {id ? "Alterar" : "Salvar"}
         </Botao>
         <Botao onClick={props.cancelado}>Cancelar</Botao>

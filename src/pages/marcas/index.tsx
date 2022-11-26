@@ -2,7 +2,6 @@ import { Brand } from "@prisma/client";
 import { useState } from "react";
 import Botao from "../../components/button/Botao";
 import Formulario from "../../components/forms/Formulario";
-import Header from "../../components/Header";
 import Layout from "../../components/Layout";
 import TableBrand from "../../components/marca/TabelaMarcas";
 import prisma from "../../lib/prisma";
@@ -31,7 +30,6 @@ export default function Home({ marca }: BrandProps) {
 
   return (
     <>
-      <Header />
       <div className="flex h-screen justify-center items-center bg-blue-900">
         <Layout titulo="Cadastro de Marcas">
           {visible === "tabela" ? (
