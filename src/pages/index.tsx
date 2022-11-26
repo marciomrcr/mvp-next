@@ -27,9 +27,13 @@ export default function Home({ marca }: BrandProps) {
     <div>
       <div className="flex ">
         <SideBar />
-        <div className="w-screen">
+        <div>
           <Header />
-          <Container />
+          <div className="container h-8 mx-auto p-5">
+            <div className="md:flex md:flex-row md:justify-between text-center">
+              <Container />
+            </div>
+          </div>
         </div>
       </div>
     </div>

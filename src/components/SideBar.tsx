@@ -9,10 +9,10 @@ import ReplayCircleFilledIcon from "@mui/icons-material/ReplayCircleFilled";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import TaskIcon from "@mui/icons-material/Task";
-//import {GiHamburgerMenu} from 'react-icons/gi'
+
 const Sidebar = () => {
   return (
-    <div className="md:w-3/12 w-6/12 h-screen">
+    <div className="md:w-3/12 w-3/12 lg:w-auto h-screen">
       <div className=" border-b py-3 mt-1 flex justify-around ">
         <p className="text-xl  font-semibold">Aliane</p>
         <p>|</p>

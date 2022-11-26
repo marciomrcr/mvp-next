@@ -7,7 +7,7 @@ const Container = () => {
     <div className=" bg-gradient-to-r from-gray-100 to-gray-50 h-full ">
       <div className="  px-8 py-1 ">
         <p className="text-gray-500 text-lg">Aliane</p>
-        <p className="font-bold text-xl transform -translate-y-2">
+        <p className="font-bold text-2xl transform -translate-y-2">
           Veja como está a sua loja hoje!
         </p>
       </div>

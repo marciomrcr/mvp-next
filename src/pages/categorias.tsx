@@ -50,22 +50,6 @@ const TelaCadCategoria = ({ categorias }: Categorias) => {
       console.log(error);
     }
   }
-  async function alterar(data: Categorias) {
-    try {
-      fetch("/api/categorias/create", {
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "PUT",
-      }).then(() => {
-        setNome({ categorias });
-        refreshPage();
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async function deleteCategory(id: string) {
     try {
